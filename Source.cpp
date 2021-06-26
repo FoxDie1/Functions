@@ -19,11 +19,16 @@ HomeWork:
 #define tab "\t"
 
 void FillRand(int arr[], const int n);
+void FillRand(double arr[], const int n);
 void Print(int arr[], const int n);
+void Print(double arr[], const int n);
 void Input(int arr[], const int n);
 void PrintReverse(int arr[], const int n);
+void PrintReverse(double arr[], const int n);
 double Sum (int arr[], const int n);
+double Sum (double arr[], const int n);
 double Avg(int arr[], const int n);
+double Avg(double arr[], const int n);
 int minValueIn(int arr[], const int n);
 int maxValueIn(int arr[], const int n);
 
@@ -175,6 +180,13 @@ void main()
 	cout << "Среднее арифметическое:" << Avg(arr, n)<<endl;
 	cout<<"Миниммальное значение:"<<minValueIn(arr, n)<<endl;
 	cout <<"Максимальное значение:"<<maxValueIn(arr, n)<<endl;
+
+	double d_arr[n];//double array
+	FillRand(d_arr, n);
+	Print(d_arr, n);
+	PrintReverse(d_arr, n);
+	cout << "сумма элементов массива:" << Sum(d_arr, n) << endl;
+	cout << "Среднее арифметическое:" << Avg(d_arr, n) << endl;
 }
 
 void FillRand(int arr[], const int n)
@@ -186,7 +198,25 @@ void FillRand(int arr[], const int n)
 	}
 }
 
+void FillRand(double arr[], const int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		arr[i] = double(rand()%100)/10;
+		//Функция rand () возвращает число в промежутке от 0 до 32767
+	}
+}
+
 void Print(int arr[], const int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		cout << arr[i] << tab;
+	}
+	cout << endl;
+}
+
+void Print(double arr[], const int n)
 {
 	for (int i = 0; i < n; i++)
 	{
@@ -202,9 +232,26 @@ void PrintReverse(int arr[], const int n)
 		cout << arr[i] << tab;
 	}
 	cout << endl;
+
+}void PrintReverse(double arr[], const int n)
+{
+	for (int i = n - 1; i >= 0; i--)
+	{
+		cout << arr[i] << tab;
+	}
+	cout << endl;
 }
 
 double Sum(int arr[], const int n)
+{
+	double Sum = 0;
+	for (int i = 0; i < n; i++)
+	{
+		Sum = Sum + arr[i];
+	}
+	return Sum;
+}
+double Sum(double arr[], const int n)
 {
 	double Sum = 0;
 	for (int i = 0; i < n; i++)
@@ -228,6 +275,10 @@ double Sum(int arr[], const int n)
 double Avg(int arr[], const int n)
 {
 	return (double)Sum(arr, n) / n;
+}
+double Avg(double arr[], const int n)
+{
+	return Sum(arr, n) / n;
 }
 
 /*int minValueIn(int arr[], const int n)
@@ -254,7 +305,9 @@ int minValueIn(int arr[], const int n)
 	}
 	return minValue;
 
-}int maxValueIn(int arr[], const int n)
+}
+
+int maxValueIn(int arr[], const int n)
 {
 	int maxValue = arr[0];
 	for (int i = 0; i < n; i++)

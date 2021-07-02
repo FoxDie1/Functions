@@ -416,17 +416,6 @@ short Sum(short arr[], const int n)
 	return Sum;
 }
 
-/*double Avg(int arr[], const int n)
-{
-	double sum = 0;
-	double avg = 0;
-	for (int i = 0; i < n; i++)
-	{
-		sum = sum + arr[i];
-	}
-	return avg = sum / n;
-}*/
-
 double Avg(int arr[], const int n)
 {
 	return (double)Sum(arr, n) / n;
@@ -447,21 +436,6 @@ short Avg(short arr[], const int n)
 {
 	return Sum(arr, n) / n;
 }
-
-/*int minValueIn(int arr[], const int n)
-{
-	int minValue = arr[0];
-	if (minValue > arr[1])
-		minValue = arr[1];
-	if (minValue > arr[2])
-		minValue = arr[2];
-	if (minValue > arr[3])
-		minValue = arr[3];
-	if (minValue > arr[4])
-		minValue = arr[4];
-
-	return minValue;
-}*/
 
 int minValueIn(int arr[], const int n)
 {

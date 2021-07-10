@@ -18,17 +18,25 @@ HomeWork:
 */
 
 #define tab "\t"
+int g_a;//(g_ -Global (Hungarian notation-венгерская нотация))глобальная пременная,ее видят все функции,ее может изменить любая функция.
+      //Поэтому использовать глобальные переменные не рекомендуется.
+	  //по скольку не известно что в ней хранится.
+	  //Но глобальые константы используются очень широко.Константу изменить никто не может,но все(функции)ее видят и могут прочитать.
+const int ROWS = 5;
+const int COLS = 8;
 
 void FillRand(int arr[], const int n);
 void FillRand(double arr[], const int n);
 void FillRand(float arr[], const int n);
 void FillRand(char arr[], const int n);
 void FillRand(short arr[], const int n);
+void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS);//Function declaration-Обьявление функции
 void Print(int arr[], const int n);
 void Print(double arr[], const int n);
 void Print(float arr[], const int n);
 void Print(char arr[], const int n);
 void Print(short arr[], const int n);
+void Print(int arr[ROWS][COLS], const int ROWS,const int COLS);
 void Input(int arr[], const int n);
 void PrintReverse(int arr[], const int n);
 void PrintReverse(double arr[], const int n);
@@ -239,6 +247,10 @@ void main()
 	cout << "Среднее арифметическое:" << Avg(s_arr, n) << endl;
 	cout << "Миниммальное значение:" << minValueIn(s_arr, n) << endl;
 	cout << "Максимальное значение:" << maxValueIn(s_arr, n) << endl;
+	cout << "+++++++++++++ARRAYS 2D+++++++++++++++\n";
+	int i_arr_2[ROWS][COLS];
+	FillRand(i_arr_2, ROWS, COLS);
+	Print(i_arr_2, ROWS, COLS);
 }
 
 void FillRand(int arr[], const int n)
@@ -281,6 +293,17 @@ void FillRand(short arr[], const int n)
 		//Функция rand () возвращает число в промежутке от 0 до 32767
 	}
 }
+void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS)//Function definition-Обьявление функции
+{
+//определяет что делает функция
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			arr[i][j] = rand() % 100;
+		}
+	}
+}
 
 void Print(int arr[], const int n)
 {
@@ -321,6 +344,17 @@ void Print(short arr[], const int n)
 		cout << arr[i] << tab;
 	}
 	cout << endl;
+}
+void Print(int arr[ROWS][COLS], const int ROWS, const int COLS)//Function definition-Обьявление функции
+{
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; j < COLS; j++)
+		{
+			cout << arr[i][j]<<tab;
+		}
+		cout << endl;
+	}
 }
 
 
@@ -533,3 +567,4 @@ short maxValueIn(short arr[], const int n)
 	}
 	return maxValue;
 }
+
